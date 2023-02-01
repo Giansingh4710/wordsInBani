@@ -16,12 +16,17 @@
         sans-serif;
     }
 
-    table,th,td {
+    table,
+    th,
+    td {
       /* background-color: grey; */
       margin-left: auto;
       margin-right: auto;
       border: 1px solid black;
-};
+    }
+
+    p {
+      white-space: pre-wrap;
     }
   </style>
 </head>
@@ -60,45 +65,84 @@
 
   <div>
     <br>
-    <!-- <button onclick="toggleShowingData()">Show All Data</button> -->
-    <div id="putData"></div>
+    <div id="putData">
+      <details>
+        <summary>kanaa</summary>
+        <pre>
+          <p id="kanaa"></p>
+        </pre>
+      </details>
+      <details>
+        <summary>kanaaTipi</summary>
+        <p id="kanaaTipi"></p>
+      </details>
+      <details>
+        <summary>sehari</summary>
+        <p id="sehari"></p>
+      </details>
+      <details>
+        <summary>behari</summary>
+        <p id="behari"></p>
+      </details>
+      <details>
+        <summary>onkar</summary>
+        <p id="onkar"></p>
+      </details>
+      <details>
+        <summary>dulankar</summary>
+        <p id="dulankar"></p>
+      </details>
+      <details>
+        <summary>laa</summary>
+        <p id="laa"></p>
+      </details>
+      <details>
+        <summary>dulava</summary>
+        <p id="dulava"></p>
+      </details>
+      <details>
+        <summary>hora</summary>
+        <p id="hora"></p>
+      </details>
+      <details>
+        <summary>kanora</summary>
+        <p id="kanora"></p>
+      </details>
+      <details>
+        <summary>tipi</summary>
+        <p id="tipi"></p>
+      </details>
+      <details>
+        <summary>mukta</summary>
+        <p id="mukta"></p>
+      </details>
+    </div>
   </div>
 
 </body>
 <script>
   const putData = document.getElementById('putData');
-  function toggleShowingData(){}
+  /* function toggleShowingData() { } */
+  const allMatars = ["mukta", "kanaa", "kanaaTipi", "sehari", "behari", "onkar", "dulankar", "laa", "dulava", "hora", "kanora", "tipi"]
+  function clearAllPs() {
+    for (const matra of allMatars) {
+      document.getElementById(matra).innerText = ''
+    }
+  }
 
   function displayData() {
     const baniTitle = document.getElementById('pickBani').value
     const theBani = ALLBANIS[baniTitle]
     const data = getDataOnWords(theBani)
 
-    for(const matraType in data){
-      let detailsTag = document.getElementById(matraType)
-      let summaryTag;
-      let pTag;
-      if (detailsTag === null){
-        detailsTag = document.createElement('details')
-        detailsTag.id  = matraType
-
-        summaryTag = document.createElement('summary')
-        summaryTag.innerText  = matraType
-
-        pTag = document.createElement('p')
-      }else{
-        summaryTag = detailsTag.getElementsByTagName('summary')[0]
-        pTag = detailsTag.getElementsByTagName('p')[0]
+    clearAllPs()
+    for (const matraType in data) {
+      for (const word of data[matraType]) {
+        allMatars.forEach((matra) => {
+          if (matraType.includes(matra))
+            document.getElementById(matra).innerText += word + ' '
+        })
       }
-
-      console.log(data[matraType])
-      for(const word of data[matraType]){
-        pTag.innerText+=word+" "
-      }
-
-      detailsTag.appendChild(summaryTag)
-      detailsTag.appendChild(pTag)
-      putData.appendChild(detailsTag)
     }
   }
 
@@ -111,7 +155,7 @@
         const matras = getWordMatras(word)
         if (matras in byMatras) {
           if (!byMatras[matras].includes(word))
-          byMatras[matras].push(word)
+            byMatras[matras].push(word)
         } else {
           byMatras[matras] = [word]
         }
@@ -153,29 +197,29 @@
 
     let ans = ""
     if (word.includes(engToPun["w"]))
-    ans += "kanaa "
+      ans += "kanaa "
     if (word.includes(engToPun["W"]))
-    ans += "kanaaTipi "
+      ans += "kanaaTipi "
     if (word.includes(engToPun["i"]))
-    ans += "sehari "
+      ans += "sehari "
     if (word.includes(engToPun["I"]))
-    ans += "behari "
+      ans += "behari "
     if (word.includes(engToPun["u"]))
-    ans += "onkar "
+      ans += "onkar "
     if (word.includes(engToPun["U"]))
-    ans += "dulankar "
+      ans += "dulankar "
     if (word.includes(engToPun["y"]))
-    ans += "laa "
+      ans += "laa "
     if (word.includes(engToPun["Y"]))
-    ans += "dulava "
+      ans += "dulava "
     if (word.includes(engToPun["o"]))
-    ans += "hora "
+      ans += "hora "
     if (word.includes(engToPun["O"]))
-    ans += "kanora "
+      ans += "kanora "
     if (word.includes(engToPun["M"]))
-    ans += "tipi "
+      ans += "tipi "
     if (ans === "")
-    ans = "mukta"
+      ans = "mukta"
     return ans
   }
 
