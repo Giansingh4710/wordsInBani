@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Words In Banis</title>
+  <script type="text/javascript" src="./banis.js"></script>
+  <style>
+    body {
+      text-align: center;
+      align-items: center;
+      font-family: -apple-system, blinkmacsystemfont, "segoe ui", "roboto", "oxygen",
+        "ubuntu", "cantarell", "fira sans", "droid sans", "helvetica neue",
+        sans-serif;
+    }
+
+    table,th,td {
+      /* background-color: grey; */
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid black;
+};
+    }
+  </style>
+</head>
+
+<body>
+  <label for='pickBani'>Choose a Bani: </label>
+  <select id='pickBani' onchange="displayData()">
+    <option value="ਜਪੁ ਜੀ ਸਾਹਿਬ">ਜਪੁ ਜੀ ਸਾਹਿਬ</option>
+    <option value="ਜਾਪੁ ਸਾਹਿਬ">ਜਾਪੁ ਸਾਹਿਬ</option>
+    <option value="ਤ੍ਵ ਪ੍ਰਸਾਦਿ ਸਵਯੇ (ਸ੍ਰਾਵਗ ਸੁਧ)">ਤ੍ਵ ਪ੍ਰਸਾਦਿ ਸਵਯੇ (ਸ੍ਰਾਵਗ ਸੁਧ)</option>
+    <option value="ਬੇਨਤੀ ਚੌਪਈ ਸਾਹਿਬ">ਬੇਨਤੀ ਚੌਪਈ ਸਾਹਿਬ</option>
+    <option value="ਅਨੰਦੁ ਸਾਹਿਬ">ਅਨੰਦੁ ਸਾਹਿਬ</option>
+    <option value="ਅਨੰਦੁ ਸਾਹਿਬ (੬ ਪਉੜੀਆਂ ਅਤੇ ਸਲੋਕੁ)">ਅਨੰਦੁ ਸਾਹਿਬ (੬ ਪਉੜੀਆਂ ਅਤੇ ਸਲੋਕੁ)</option>
+    <option value="ਰਹਰਾਸਿ ਸਾਹਿਬ (ਸ:)">ਰਹਰਾਸਿ ਸਾਹਿਬ (ਸ:)</option>
+    <option value="ਰਹਰਾਸਿ ਸਾਹਿਬ (ਟ:)">ਰਹਰਾਸਿ ਸਾਹਿਬ (ਟ:)</option>
+    <option value="ਆਰਤੀ">ਆਰਤੀ</option>
+    <option value="ਵੱਡੀ ਆਰਤੀ">ਵੱਡੀ ਆਰਤੀ</option>
+    <option value="ਸੋਹਿਲਾ ਸਾਹਿਬ">ਸੋਹਿਲਾ ਸਾਹਿਬ</option>
+    <option value="ਸੁਖਮਨੀ ਸਾਹਿਬ">ਸੁਖਮਨੀ ਸਾਹਿਬ</option>
+    <option value="ਆਸਾ ਕੀ ਵਾਰ">ਆਸਾ ਕੀ ਵਾਰ</option>
+    <option value="ਅਰਦਾਸ">ਅਰਦਾਸ</option>
+    <option value="ਸਲੋਕ ਮਹਲਾ ੯">ਸਲੋਕ ਮਹਲਾ ੯</option>
+    <option value="ਸ਼ਬਦ ਹਜ਼ਾਰੇ">ਸ਼ਬਦ ਹਜ਼ਾਰੇ</option>
+    <option value="ਸ਼ਬਦ ਹਜ਼ਾਰੇ ਪਾਤਿਸ਼ਾਹੀ ੧੦">ਸ਼ਬਦ ਹਜ਼ਾਰੇ ਪਾਤਿਸ਼ਾਹੀ ੧੦</option>
+    <option value="ਤ੍ਵ ਪ੍ਰਸਾਦਿ ਸ੍ਵਯੇ (ਦੀਨਨ ਕੀ)">ਤ੍ਵ ਪ੍ਰਸਾਦਿ ਸ੍ਵਯੇ (ਦੀਨਨ ਕੀ)</option>
+    <option value="ਅਕਾਲ ਉਸਤਤ">ਅਕਾਲ ਉਸਤਤ</option>
+    <option value="ਬਾਵਨ ਅਖਰੀ">ਬਾਵਨ ਅਖਰੀ</option>
+    <option value="ਸਿਧ ਗੋਸਟਿ">ਸਿਧ ਗੋਸਟਿ</option>
+    <option value="ਓਅੰਕਾਰੁ">ਓਅੰਕਾਰੁ</option>
+    <option value="ਬਾਰਹ ਮਾਹਾ">ਬਾਰਹ ਮਾਹਾ</option>
+    <option value="ਚੰਡੀ ਦੀ ਵਾਰ">ਚੰਡੀ ਦੀ ਵਾਰ</option>
+    <option value="ਲਾਵਾਂ (ਅਨੰਦ ਕਾਰਜ)">ਲਾਵਾਂ (ਅਨੰਦ ਕਾਰਜ)</option>
+    <option value="ਰਾਮਕਲੀ ਸਦੁ">ਰਾਮਕਲੀ ਸਦੁ</option>
+    <option value="ਅਲਾਹਣੀਆ (ਸੋਗ ਦਾ ਗੀਤ)">ਅਲਾਹਣੀਆ (ਸੋਗ ਦਾ ਗੀਤ)</option>
+  </select>
+
+  <div>
+    <br>
+    <!-- <button onclick="toggleShowingData()">Show All Data</button> -->
+    <div id="putData"></div>
+  </div>
+
+</body>
+<script>
+  const putData = document.getElementById('putData');
+  function toggleShowingData(){}
+
+  function displayData() {
+    const baniTitle = document.getElementById('pickBani').value
+    const theBani = ALLBANIS[baniTitle]
+    const data = getDataOnWords(theBani)
+
+    for(const matraType in data){
+      let detailsTag = document.getElementById(matraType)
+      let summaryTag;
+      let pTag;
+      if (detailsTag === null){
+        detailsTag = document.createElement('details')
+        detailsTag.id  = matraType
+
+        summaryTag = document.createElement('summary')
+        summaryTag.innerText  = matraType
+
+        pTag = document.createElement('p')
+      }else{
+        summaryTag = detailsTag.getElementsByTagName('summary')[0]
+        pTag = detailsTag.getElementsByTagName('p')[0]
+      }
+
+      console.log(data[matraType])
+      for(const word of data[matraType]){
+        pTag.innerText+=word+" "
+      }
+
+      detailsTag.appendChild(summaryTag)
+      detailsTag.appendChild(pTag)
+      putData.appendChild(detailsTag)
+    }
+  }
+
+  function getDataOnWords(bani) {
+    const byMatras = {}
+    for (let i = 0; i < bani.length; i += 1) {
+      const words = bani[i].split(" ")
+      for (const word of words) {
+        if (word.includes("॥")) continue
+        const matras = getWordMatras(word)
+        if (matras in byMatras) {
+          if (!byMatras[matras].includes(word))
+          byMatras[matras].push(word)
+        } else {
+          byMatras[matras] = [word]
+        }
+      }
+    }
+    return byMatras
+    /* console.log(byMatras['mukta']) */
+
+    /* const matraFixes = [ */
+    /*   ['[ਉ, ਊ]', 'ੳ'], */
+    /*   ['[ਆ, ਆਂ, ਐ, ਔ]', 'ਅ'], */
+    /*   ['[ਈ, ਏ]', 'ੲ'], */
+    /* ]; */
+
+    /* const newMuks = [] */
+    /* for(let word of byMatras['mukta']){ */
+    /*   for(const set of matraFixes){ */
+    /*     word = word.replace(new RegExp(set[0], 'g'), set[1]); */
+    /*   } */
+    /*   newMuks.push(word) */
+    /* } */
+    /* console.log(newMuks) */
+  }
+
+  function getWordMatras(word) {
+    const engToPun = {
+      "w": "ਾ",
+      "W": "ਾਂ",
+      "i": "ਿ",
+      "I": "ੀ",
+      "u": "ੁ",
+      "U": "ੂ",
+      "y": "ੇ",
+      "Y": "ੈ",
+      "o": "ੋ",
+      "O": "ੌ",
+      "M": "ੰ",
+    }
+
+    let ans = ""
+    if (word.includes(engToPun["w"]))
+    ans += "kanaa "
+    if (word.includes(engToPun["W"]))
+    ans += "kanaaTipi "
+    if (word.includes(engToPun["i"]))
+    ans += "sehari "
+    if (word.includes(engToPun["I"]))
+    ans += "behari "
+    if (word.includes(engToPun["u"]))
+    ans += "onkar "
+    if (word.includes(engToPun["U"]))
+    ans += "dulankar "
+    if (word.includes(engToPun["y"]))
+    ans += "laa "
+    if (word.includes(engToPun["Y"]))
+    ans += "dulava "
+    if (word.includes(engToPun["o"]))
+    ans += "hora "
+    if (word.includes(engToPun["O"]))
+    ans += "kanora "
+    if (word.includes(engToPun["M"]))
+    ans += "tipi "
+    if (ans === "")
+    ans = "mukta"
+    return ans
+  }
+
+  displayData()
+</script>
+
+</html>
