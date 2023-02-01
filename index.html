@@ -124,9 +124,24 @@
   const putData = document.getElementById('putData');
   /* function toggleShowingData() { } */
   const allMatars = ["mukta", "kanaa", "kanaaTipi", "sehari", "behari", "onkar", "dulankar", "laa", "dulava", "hora", "kanora", "tipi"]
+
   function clearAllPs() {
     for (const matra of allMatars) {
       document.getElementById(matra).innerText = ''
+    }
+  }
+  function sortAllPs() {
+    function sortStringByWordLen(str) {
+      let words = str.split(" ");
+      words.sort(function (a, b) {
+        return a.length - b.length;
+      });
+      return words.join(" ")
+    }
+
+    for (const matra of allMatars) {
+      const thePtag = document.getElementById(matra)
+      thePtag.innerText = sortStringByWordLen(thePtag.innerText)
     }
   }
 
@@ -137,13 +152,18 @@
 
     clearAllPs()
     for (const matraType in data) {
-      for (const word of data[matraType]) {
-        allMatars.forEach((matra) => {
-          if (matraType.includes(matra))
-            document.getElementById(matra).innerText += word + ' '
-        })
+      for (const matra of allMatars) {
+        const thePtag = document.getElementById(matra)
+        if (matraType.includes(matra)) {
+          let allWords = ''
+          for (const word of data[matraType]) {
+            allWords += word + ' '
+          }
+          thePtag.innerText += allWords
+        }
       }
     }
+    sortAllPs()
   }
 
   function getDataOnWords(bani) {
